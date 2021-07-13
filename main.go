@@ -55,7 +55,6 @@ func makeRobot(fp, dst string, rbt *Robots) {
 		log.Print(err)
 		return
 	}
-	fmt.Println(t)
 
 	f, err := os.Create(dst)
 	if err != nil {
@@ -76,12 +75,12 @@ func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	confFile := flag.String("config", "config.toml", "Config file to use")
+	flag.Parse()
 
 	conf, err := readConfig(*confFile)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(conf)
 
 	sm := stm.NewSitemap(1)
 
